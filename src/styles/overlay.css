@@ -1,0 +1,60 @@
+/* The native overlay is transparent only around its opaque themed card.
+   No blur/composition APIs or new palette: all content uses existing tokens. */
+html[data-window='overlay'], html[data-window='overlay'] body { background: transparent; }
+html[data-window='overlay'] body { overflow: hidden; }
+.overlay-shell { padding: 8px; width: 100%; margin: 0; }
+.overlay-card {
+  display: flex; flex-direction: column; gap: 8px; padding: 12px;
+  min-height: 300px; max-height: 424px; overflow-y: auto;
+  color: var(--text-primary); background: var(--app-bg);
+  border: 1px solid var(--border-color); border-radius: 16px;
+  box-shadow: 0 3px 8px color-mix(in srgb, var(--app-bg) 65%, transparent);
+}
+.overlay-header { display: flex; align-items: center; gap: 2px; min-height: 30px; }
+.overlay-drag { display: flex; align-items: center; gap: 7px; flex: 1; min-width: 0; align-self: stretch; user-select: none; }
+.overlay-drag > * { pointer-events: none; }
+.overlay-drag svg { width: 25px; height: 25px; color: var(--accent); }
+.overlay-drag strong { font-size: 13px; font-weight: 550; letter-spacing: 2px; }
+.overlay-drag > span { font-size: 8px; color: var(--text-secondary); }
+.overlay-icon { border: 0; border-radius: 7px; background: transparent; color: var(--text-secondary); width: 30px; height: 30px; padding: 0; display: grid; place-items: center; flex-shrink: 0; }
+.overlay-icon:hover { background: var(--surface-hover); color: var(--text-primary); }
+.overlay-icon[aria-pressed=true] { color: var(--accent); background: var(--surface); }
+.overlay-close:hover { background: var(--window-close-bg); color: var(--text-primary); }
+.overlay-icon:focus-visible, .overlay-discord button:focus-visible { outline-offset: -2px; }
+.overlay-volume { padding-top: 4px; }
+.overlay-volume-label { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; }
+.overlay-volume-label span small { color: var(--text-secondary); font-size: 10px; }
+.overlay-volume-label output { font-size: 21px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.overlay-volume-label output small { font-size: 11px; color: var(--text-secondary); margin-left: 2px; }
+.overlay-slider-row { display: flex; align-items: center; gap: 6px; }
+.overlay-slider-row input { margin: 0; }
+.overlay-track { display: flex; align-items: center; gap: 4px; padding: 10px 8px; background: var(--surface); border: 1px solid var(--border-color); border-radius: 10px; }
+.overlay-track-copy { flex: 1; min-width: 0; display: grid; gap: 3px; }
+.overlay-track-copy small { font-size: 7px; color: var(--text-secondary); letter-spacing: 1.3px; }
+.overlay-track-copy strong { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.overlay-track-copy span { font-size: 8px; color: var(--text-secondary); }
+.overlay-playback { display: flex; align-items: center; gap: 1px; }
+.overlay-playback .overlay-icon { width: 28px; }
+.overlay-playback .overlay-play { color: var(--accent); background: var(--surface-hover); }
+.overlay-companion { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 84px; }
+.overlay-companion .mascot-display { max-width: 104px; flex-shrink: 0; }
+.overlay-discord { display: grid; gap: 6px; flex: 1; }
+.overlay-discord button { display: flex; align-items: center; gap: 8px; min-height: 32px; font-size: 11px; padding: 6px 9px; border-radius: 7px; border: 1px solid var(--border-color); background: var(--surface); color: var(--text-primary); }
+.overlay-discord button:hover { background: var(--surface-hover); }
+.overlay-discord button[aria-pressed=true] { border-color: var(--accent); color: var(--accent); }
+.overlay-discord small { margin-left: auto; font-size: 8px; color: var(--text-secondary); }
+.overlay-footnote { display: flex; justify-content: space-between; gap: 8px; font-size: 9px; line-height: 1.5; margin: auto 0 0; color: var(--text-secondary); }
+.overlay-footnote span { font-size: 9px; }
+.overlay-error { font-size: 10px; overflow-wrap: anywhere; }
+.desktop-settings { margin-top: 20px; padding: 24px; }
+.desktop-settings-heading { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 18px; }
+.desktop-settings-heading > svg { color: var(--accent); }
+.desktop-settings p { font-size: 11px; margin-top: 8px; }
+.shortcut-form { margin: 20px 0; }
+.shortcut-form > label { display: block; font-size: 12px; margin-bottom: 8px; }
+.shortcut-form > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.shortcut-form input { width: 200px; min-width: 0; padding: 9px 12px; font: inherit; border-radius: 7px; border: 1px solid var(--border-color); background: var(--app-bg); color: var(--text-primary); }
+.desktop-check { display: flex; gap: 10px; align-items: center; margin: 13px 0; font-size: 12px; }
+.desktop-check input { accent-color: var(--accent); width: 17px; height: 17px; flex-shrink: 0; }
+.desktop-status { color: var(--text-secondary); }
+.desktop-error { color: var(--text-primary); border-left: 2px solid var(--accent); padding-left: 10px; }

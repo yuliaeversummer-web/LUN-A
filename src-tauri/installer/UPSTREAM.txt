@@ -1,0 +1,2 @@
+Upstream commit: d62e5d9c0878b6fb327543cc9be50aa1696ee23c
+Source: https://github.com/tauri-apps/tauri/tree/d62e5d9c0878b6fb327543cc9be50aa1696ee23c/crates/tauri-bundler/src/bundle/windows/nsis/installer.nsi

@@ -1,0 +1,49 @@
+[[permission]]
+identifier = "desktop-shared"
+description = "Read and modify validated theme and overlay preferences; open the fixed main window."
+commands.allow = ["get_desktop_state", "set_desktop_theme", "configure_overlay", "open_main"]
+
+[[permission]]
+identifier = "toggle-overlay"
+description = "Show or hide the existing fixed-label overlay."
+commands.allow = ["toggle_overlay"]
+
+[[permission]]
+identifier = "overlay-controls"
+description = "Hide and fit only the existing overlay, with bounded dimensions."
+commands.allow = ["hide_overlay", "fit_overlay", "open_mixer"]
+
+[[permission]]
+identifier = "startup-settings"
+description = "Configure official autostart registration and the tray-start preference from main only."
+commands.allow = ["configure_startup"]
+
+[[permission]]
+identifier = "windows-audio"
+description = "Read render/capture metadata and control only render master and enumerated sessions; never capture audio or mute input devices."
+commands.allow = ["get_audio_state", "get_audio_sessions", "get_audio_devices", "refresh_audio", "set_master_volume", "set_master_mute", "set_session_volume", "set_session_mute"]
+
+[[permission]]
+identifier = "sound-settings"
+description = "Open only the fixed ms-settings:sound Windows settings URI."
+commands.allow = ["open_sound_settings"]
+
+[[permission]]
+identifier = "media-controls"
+description = "Read current GSMTC DTO/artwork and send validated commands only to the selected verified desktop music session."
+commands.allow = ["get_media_state", "get_media_artwork", "media_play", "media_pause", "media_toggle_playback", "media_next", "media_previous", "media_seek"]
+
+[[permission]]
+identifier = "media-settings"
+description = "Refresh GSMTC discovery or select one of the backend-verified desktop sessions; main only."
+commands.allow = ["refresh_media_sessions", "select_media_session"]
+
+[[permission]]
+identifier = "discord-controls"
+description = "Read verified Discord availability and send only configured Mute/Deafen actions; no raw input sequence."
+commands.allow = ["get_discord_state", "get_discord_settings", "discord_toggle_mute", "discord_toggle_deafen"]
+
+[[permission]]
+identifier = "discord-settings"
+description = "Configure validated Discord client and chords or refresh detection from main only."
+commands.allow = ["configure_discord", "refresh_discord"]

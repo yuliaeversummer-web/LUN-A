@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "desktop-shared",
+  "description": "Local audio/media/Discord synchronization and validated preferences for the two existing windows.",
+  "windows": ["main", "overlay"],
+  "permissions": ["discord-controls", "media-controls", "windows-audio", "desktop-shared", "core:event:allow-listen", "core:event:allow-unlisten", "core:window:allow-is-visible", "core:window:allow-is-minimized"]
+}

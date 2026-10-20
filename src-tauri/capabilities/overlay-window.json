@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "overlay-window",
+  "description": "Only dragging, hiding and fitting the compact overlay; no window creation or system audio access.",
+  "windows": ["overlay"],
+  "permissions": ["overlay-controls", "core:window:allow-start-dragging"]
+}

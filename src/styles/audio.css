@@ -1,0 +1,28 @@
+.native-mixer, .audio-devices { padding: 22px; margin-bottom: 16px; }
+.native-mixer .card-heading { min-width: 0; }
+.native-mixer .card-heading > div { min-width: 0; flex: 1; }
+.native-mixer .card-heading p { overflow-wrap: anywhere; font-size: 11px; margin-top: 5px; }
+.native-mixer h2, .audio-devices h2 { font-size: 16px; }
+.audio-notice { padding: 12px; border-left: 2px solid var(--accent); background: var(--surface-hover); font-size: 12px; margin-top: 14px; overflow-wrap: anywhere; }
+.audio-session-heading, .audio-devices-heading { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; align-items: center; margin: 20px 0 10px; }
+.audio-session-heading span { font-size: 10px; color: var(--text-secondary); }
+.audio-sessions { max-height: 320px; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+.audio-session { display: grid; grid-template-columns: 24px minmax(90px, 1fr) 34px minmax(80px, 1fr) 38px; align-items: center; gap: 10px; border-top: 1px solid var(--border-color); padding: 12px 4px; }
+.audio-session-info { display: grid; gap: 4px; min-width: 0; }
+.audio-session-info strong { font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.audio-session-info small { font-size: 10px; color: var(--text-secondary); overflow-wrap: anywhere; }
+.audio-session output { font-size: 11px; font-variant-numeric: tabular-nums; text-align: right; }
+.audio-session button[aria-pressed=true] { color: var(--accent); }
+.audio-devices-heading { margin-top: 0; }
+.audio-devices .text-link { margin: 0; background: transparent; border: 0; padding: 6px 0; color: var(--accent); }
+.audio-device-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 18px; }
+.audio-device-columns h3 { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.audio-device-columns ul { list-style: none; padding: 0; margin: 10px 0 0; max-height: 200px; overflow-y: auto; }
+.audio-device-columns li { display: grid; gap: 5px; font-size: 11px; padding: 10px 0; border-bottom: 1px solid var(--border-color); overflow-wrap: anywhere; }
+.audio-device-columns strong { font-weight: 500; }.audio-device-columns span { color: var(--text-secondary); font-size: 10px; }
+.overlay-mixer-link { background: transparent; color: var(--accent); border: 0; text-align: left; padding: 0; font-size: 10px; margin-top: 3px; }
+.overlay-native-label { max-width: 210px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 9px; color: var(--text-secondary); }
+.dashboard-grid > .integration-stack { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+.dashboard-grid > .integration-stack .quiet-note { grid-column: 1 / -1; }
+@media(max-width:930px) { .native-mixer, .audio-devices { padding: 16px; }.audio-session { gap: 7px; }.audio-device-columns { gap: 16px; } }
+@media(max-width:700px) { .audio-session { grid-template-columns: 24px minmax(80px,1fr) 34px 38px; }.audio-session input { grid-column: 2 / 4; grid-row: 2; }.audio-session output { grid-column: 4; grid-row: 2; }.audio-device-columns, .dashboard-grid > .integration-stack { grid-template-columns: 1fr; } }

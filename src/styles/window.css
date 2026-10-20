@@ -1,0 +1,92 @@
+/* One bounded application shell; only the page content owns scrolling. */
+.main-window {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.main-window .app-shell { flex: 1; min-height: 0; overflow: hidden; padding-right: 5px; }
+.main-window .workspace { min-height: 0; }
+.main-window .topbar, .main-window footer { flex-shrink: 0; }
+.content-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  overscroll-behavior-y: contain;
+  scroll-padding-block: 20px;
+}
+.content-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
+.content-scroll main#main-content { margin-block: 0; }
+.main-window .sidebar { min-height: 0; overflow: hidden; }
+.main-window .brand { margin-bottom: 30px; }
+.main-window .sidebar-note {
+  margin: auto 12px 22px;
+  padding-top: 16px;
+}
+.main-window .sidebar-bottom { flex-shrink: 0; }
+
+.titlebar {
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: stretch;
+  background: var(--app-bg);
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+.titlebar-drag-region { flex: 1; min-width: 0; display: flex; align-items: center; padding-inline: 18px; }
+.titlebar-brand { display: flex; align-items: center; gap: 9px; pointer-events: none; white-space: nowrap; }
+.titlebar-brand svg { width: 23px; height: 23px; color: var(--text-secondary); }
+.titlebar-brand strong { font-size: 12px; font-weight: 600; letter-spacing: 3px; }
+.titlebar-brand span { font-size: 10px; color: var(--text-secondary); margin-left: 5px; }
+.titlebar-error { color: var(--text-secondary); font-size: 10px; margin-left: auto; padding-left: 18px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.titlebar-controls { display: flex; flex-shrink: 0; }
+.window-button {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  width: 46px;
+  height: 43px;
+  border-radius: 0;
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+  background: transparent;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+.window-button:not(:disabled):hover { color: var(--accent); background: var(--surface-hover); }
+.window-button:not(:disabled):active { background: color-mix(in srgb, var(--accent) 18%, var(--surface)); }
+.window-button-close:not(:disabled):hover, .window-button-close:not(:disabled):active { color: #fff; background: var(--window-close-bg); }
+.window-button:focus-visible { outline: 2px solid var(--text-primary); outline-offset: -5px; }
+.window-button:disabled { cursor: default; }
+
+/* Hit regions only; resizing itself is handled by Tauri/Windows. The page's
+   scrollbar sits inside the 5px right gutter, away from the resize strip. */
+.window-resize-edge { position: fixed; z-index: 50; user-select: none; }
+.resize-North { top: 0; left: 8px; right: 8px; height: 5px; }
+.resize-South { bottom: 0; left: 8px; right: 8px; height: 5px; }
+.resize-East { top: 8px; bottom: 8px; right: 0; width: 5px; }
+.resize-West { top: 8px; bottom: 8px; left: 0; width: 5px; }
+.resize-NorthEast, .resize-NorthWest, .resize-SouthEast, .resize-SouthWest { width: 8px; height: 8px; }
+.resize-NorthEast { top: 0; right: 0; }
+.resize-NorthWest { top: 0; left: 0; }
+.resize-SouthEast { bottom: 0; right: 0; }
+.resize-SouthWest { bottom: 0; left: 0; }
+
+/* WebView2: leave standard scrollbar-* at auto so the 6px pseudo-element
+   rules (including thumb hover) are used instead of Chromium's thin preset. */
+:root {
+  --window-close-bg: #c42b36;
+  --scrollbar-thumb: color-mix(in srgb, var(--accent) 48%, transparent);
+  --scrollbar-thumb-hover: color-mix(in srgb, var(--accent) 85%, transparent);
+  --scrollbar-track: transparent;
+}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+::-webkit-scrollbar-corner { background: var(--scrollbar-track); }
+@supports not selector(::-webkit-scrollbar) {
+  * { scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); }
+}

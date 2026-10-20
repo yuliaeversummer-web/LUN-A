@@ -1,0 +1,17 @@
+{
+  "originalSha256": "849814d2d5d87cee1a55a242df8fd9f67b9ee9b69833d3d3f1df637d69838a80",
+  "dimensions": [
+    1312,
+    1199
+  ],
+  "sourceBytes": 2272020,
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "optimizedDimensions": [
+    900,
+    822
+  ],
+  "operations": "proportional LANCZOS resize; bitmap alpha composition on #0d1216; no crop/recolor"
+}
